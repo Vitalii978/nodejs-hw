@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 
+
 const noteSchema = new Schema(
   {
     title: {type: String, trim: true, required: true},
@@ -26,5 +27,7 @@ const noteSchema = new Schema(
     versionKey: false,
   },
 );
+
+noteSchema.index({title: "text", content: "text"});
 
 export const Note = model('Note', noteSchema);
